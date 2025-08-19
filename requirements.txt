@@ -6,3 +6,4 @@ python-multipart==0.0.9
 Jinja2==3.1.4
 setuptools>=70.0.0
 wheel>=0.43.0
+psycopg[binary]==3.1.19
