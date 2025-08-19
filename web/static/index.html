@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Milk Tracker 🍼</title>
+    <link rel="stylesheet" href="/static/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <header class="topbar">
+        <div class="brand">Milk Tracker 🍼</div>
+        <div class="date-picker">
+            <label for="picker-date">Chọn ngày</label>
+            <input type="date" id="picker-date" />
+        </div>
+    </header>
+
+    <main class="layout">
+        <!-- LEFT -->
+        <section class="left-pane">
+            <div class="card">
+                <div class="chart-header">
+                    <h2>Biểu đồ (7 ngày)</h2>
+                    <div class="chart-controls">
+                        <input type="range" id="day-slider" min="0" max="179" value="179" />
+                    </div>
+                </div>
+                <div class="chart-wrap">
+                    <canvas id="weeklyChart" height="260"></canvas>
+                </div>
+            </div>
+
+            <div class="card mini">
+                <div class="totals-header">
+                    <h3>Tổng theo loại</h3>
+                    <div class="agg-controls">
+                        <select id="agg-mode" title="Phạm vi">
+                            <option value="week">Theo tuần</option>
+                            <option value="month">Theo tháng</option>
+                            <option value="year">Theo năm</option>
+                        </select>
+
+                        <!-- chỉ còn month/year -->
+                        <input type="month" id="agg-month" class="hidden" />
+                        <input type="number" id="agg-year" class="hidden" min="2000" max="2100" step="1"
+                            placeholder="2025" />
+                    </div>
+                </div>
+
+                <table class="totals-table">
+                    <thead>
+                        <tr>
+                            <th>Loại</th>
+                            <th>ml</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Sữa mẹ (me)</td>
+                            <td id="t-me">0</td>
+                        </tr>
+                        <tr>
+                            <td>Preterm (pre)</td>
+                            <td id="t-pre">0</td>
+                        </tr>
+                        <tr>
+                            <td>Công thức (sct)</td>
+                            <td id="t-sct">0</td>
+                        </tr>
+                        <tr class="total-row">
+                            <td><strong>Tổng</strong></td>
+                            <td id="t-all">0</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div id="agg-extra" class="meta" style="margin-top:8px"></div>
+            </div>
+
+
+        </section>
+
+        <!-- RIGHT -->
+        <section class="right-pane">
+            <div class="card form-card">
+                <h2>Nhập cữ bú</h2>
+                <form id="feed-form">
+                    <div class="row">
+                        <div class="col sm">
+                            <label for="time">Giờ</label>
+                            <input type="time" id="time" required />
+                        </div>
+                        <div class="col">
+                            <label for="amount">Lượng (ml)</label>
+                            <div class="num-group">
+                                <button type="button" class="btn sm" id="minus10">−10</button>
+                                <input type="number" id="amount" min="0" step="1" placeholder="120" required
+                                    inputmode="numeric" />
+                                <button type="button" class="btn sm" id="plus10">+10</button>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <label for="type">Loại</label>
+                            <select id="type" required>
+                                <option value="me">Sữa mẹ (me)</option>
+                                <option value="pre">Preterm (pre)</option>
+                                <option value="sct">Công thức (sct)</option>
+                            </select>
+                        </div>
+                        <div class="col xs">
+                            <label>&nbsp;</label>
+                            <button type="submit" class="btn">Thêm</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="card">
+                <h2>Nhật ký trong ngày</h2>
+                <ul id="day-list" class="feed-list"></ul>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <small>Prototype. Sẽ nối API/DB sau khi anh ngủ đủ.</small>
+    </footer>
+
+    <script src="/static/app.js"></script>
+</body>
+
+</html>

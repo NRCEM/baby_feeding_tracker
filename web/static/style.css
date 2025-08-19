@@ -1,0 +1,279 @@
+:root {
+    --bg: #0f1115;
+    --card: #171923;
+    --muted: #9aa4b2;
+    --text: #e6e8ee;
+    --accent: #5aa9ff;
+    --border: #2a2f3a;
+    --success: #6ee7b7;
+}
+
+* {
+    box-sizing: border-box
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial
+}
+
+.topbar {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--border);
+    background: rgba(15, 17, 21, .75);
+    backdrop-filter: blur(6px)
+}
+
+.brand {
+    font-weight: 700
+}
+
+.date-picker {
+    display: flex;
+    align-items: center;
+    gap: 8px
+}
+
+.date-picker input {
+    background: var(--card);
+    color: var(--text);
+    border: 1px solid var(--border);
+    padding: 8px 10px;
+    border-radius: 8px
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    padding: 18px
+}
+
+@media (max-width:1000px) {
+    .layout {
+        grid-template-columns: 1fr
+    }
+}
+
+.card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px;
+    box-shadow: 0 8px 24px -18px black;
+    margin-bottom: 14px
+}
+
+.card h2 {
+    margin: 0 0 10px 0;
+    font-size: 18px
+}
+
+.card.mini h3 {
+    margin: 0 0 8px 0;
+    font-size: 16px
+}
+
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px
+}
+
+.chart-controls {
+    display: flex;
+    gap: 10px;
+    align-items: center
+}
+
+.chart-wrap {
+    height: 320px
+}
+
+.hint {
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 6px
+}
+
+.num-group {
+    display: flex;
+    gap: 8px;
+    align-items: center
+}
+
+.num-group input {
+    flex: 1
+}
+
+.btn {
+    padding: 10px 14px;
+    border: 1px solid var(--accent);
+    background: transparent;
+    color: var(--text);
+    border-radius: 8px;
+    cursor: pointer
+}
+
+.btn:hover {
+    background: rgba(90, 169, 255, .08)
+}
+
+.btn.sm {
+    padding: 6px 10px;
+    font-size: 12px
+}
+
+.form-card .row {
+    display: grid;
+    grid-template-columns: 120px 1fr 160px 100px;
+    gap: 10px
+}
+
+@media (max-width:640px) {
+    .form-card .row {
+        grid-template-columns: 1fr
+    }
+}
+
+label {
+    display: block;
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 6px
+}
+
+input,
+select {
+    width: 100%;
+    background: #10131a;
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 12px
+}
+
+.feed-list {
+    list-style: none;
+    padding: 0;
+    margin: 0
+}
+
+.feed-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 8px;
+    border-bottom: 1px solid var(--border)
+}
+
+.feed-item:last-child {
+    border-bottom: 0
+}
+
+.meta {
+    color: var(--muted);
+    font-size: 12px
+}
+
+.badge {
+    display: inline-block;
+    border: 1px solid var(--border);
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: 12px
+}
+
+.badge.me {
+    border-color: #4CC9F0;
+    ;
+    color: #4CC9F0
+}
+
+.badge.pre {
+    border-color: #F72585;
+    color: #F72585;
+}
+
+.badge.sct {
+    border-color: #FFB703;
+    color: #FFB703;
+}
+
+.totals-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px
+}
+
+.totals-table th,
+.totals-table td {
+    padding: 8px;
+    border-bottom: 1px solid var(--border);
+    text-align: left
+}
+
+.total-row td {
+    font-weight: 700
+}
+
+.footer {
+    padding: 12px 18px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    text-align: center
+}
+
+.totals-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px
+}
+
+.agg-controls {
+    display: flex;
+    gap: 8px;
+    align-items: center
+}
+
+.hidden {
+    display: none
+}
+
+.feed-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, .06)
+}
+
+.feed-item .actions {
+    display: flex;
+    gap: 8px;
+    align-items: center
+}
+
+.btn.danger {
+    border: 1px solid rgba(255, 0, 0, .4);
+    background: rgba(255, 0, 0, .08);
+    padding: 4px 8px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn.danger:hover {
+    background: rgba(255, 0, 0, .18)
+}
