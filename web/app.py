@@ -12,15 +12,17 @@ from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.orm import declarative_base, sessionmaker, Session
 import os
 from pathlib import Path
+from sqlalchemy import create_engine
+from sqlalchemy.orm import declarative_base, sessionmaker
 
 BASE_DIR = Path(__file__).resolve().parent
 DATABASE_URL = os.getenv("DATABASE_URL", f"sqlite:///{BASE_DIR / 'milk.db'}")
 
-# --- normalize DATABASE_URL (Render + Neon) ---
-if DATABASE_URL.startswith("postgres://"):
-    DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql+psycopg://", 1)
-elif DATABASE_URL.startswith("postgresql://"):
+# Chuẩn hoá cho Neon/Render:
+if DATABASE_URL.startswith("postgresql://"):
     DATABASE_URL = DATABASE_URL.replace("postgresql://", "postgresql+psycopg://", 1)
+elif DATABASE_URL.startswith("postgres://"):
+    DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql+psycopg://", 1)
 
 engine_kwargs = {}
 if DATABASE_URL.startswith("sqlite"):
